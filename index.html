@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Generador de QR</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='generadordeQR.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Syabil&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src='generadordeQR.js'></script>
+</head>
+<body>
+    <h4>HORA ACTUAL <i class="fas fa-clock"></i></h4>
+    <p id="myClock"></p>
+  
+<hr style="border-color:grey";>
+  
+  <header>
+
+    <img src="https://i.imgur.com/kGVe72R.png" alt="logo de bienestar">
+</header>
+  
+    <h1>Generador De QR De Bienestar</h1>
+    <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">
+        <h2 class="bienestar">Cualquier Tipo De Enlace:</h2>
+        <input type="text" id="enlaces" placeholder="Ingresa el Enlace Aquí" required>
+        <button type="submit">GENERAR QR</button>
+    </form>
+    <p id="error-message"></p>
+    <canvas id="qr"></canvas>
+    <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
+    <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
+    <h3>@JMP :)</h3>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+
+
+
+
+
+body {
+  padding-top: 5px;
+  display: block;
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url("https://i.imgur.com/kC8eZcj.png"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: -2%;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+
+  #myClock {
+          
+         margin-top: 0px;
+          color: gold;
+            font-size: 17px;
+            font-family: cursive;
+           transition: transform 0.5s;
+              filter: brightness(150%);
+            font-weight: bold;
+            text-shadow: 10px 10px
+             8px rgba(0, 0, 0, 0.9);
+       }
+
+#myClock:hover {
+  filter: brightness(150%);
+  color: green;
+  transform: scale(1.6);
+}
+
+
+p {
+
+  
+margin-right: 60%;
+
+}
+
+
+
+
+h4 {
+  
+  filter: brightness(100%);
+  color: white;
+  font-size: 14px;
+margin-right: 60%;
+  font-weight: bold;
+  font-style: italic;
+ font-family: 'Courier New', cursive;
+
+}
+
+
+
+
+img {
+
+animation-name: myAnimation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  margin-top: 200px;
+  filter: brightness(150%);
+  background-color: none;
+  width: 200px;
+  transition: transform 0.5s;
+  height: 200px;
+}
+
+img:hover {
+  transform: scale(1.5);
+  transition: transform 0.9s ease-in-out;
+  box-shadow: 25px 25px 25px aqua;
+  transform: rotate(360deg);
+}
+
+
+
+@keyframes myAnimation {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+h1 {
+
+   filter: brightness(200%);
+    transition: all 0.5s;
+    color: aqua;
+    font-size: 3.2em;
+    font-weight: bold;
+    font-style: italic;
+   font-family: 'TeXGyreCursor-Regular', monospace;
+}
+
+h1:hover {
+  filter: brightness(150%);
+  color: gold;
+  transform: scale(1.2);
+}
+
+
+.bienestar {
+  filter: brightness(200%);
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  font-size: 2em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.bienestar:hover {
+  filter: brightness(150%);
+  color: gold;
+}
+
+
+
+input[type="text"] {
+  color: darkblue;
+  filter: brightness(80%);
+  width: 350px;
+  font-family: 'TeXGyreCursor-Regular', monospace;
+  padding: 15px 80px;
+  margin: 150px 25px;
+  font-weight: bold;
+  box-sizing: border-box;
+  border: 2px solid aqua;
+font-style: italic;
+  border-radius: 50px;
+}
+
+
+
+
+
+button {
+  
+  font-style: italic;
+  width: 150px;
+  background-color: #154360;
+  color: white;
+ font-family: 'Courier New', cursive;;
+  filter: brightness(120%);
+  padding: 15px 0 15px;
+   font-weight: bold;
+  text-align: center;
+  transition: all 0.5s;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 15px 80px;
+ border: 0px solid orange;
+border-radius: 5px;
+
+}
+
+button:hover {
+  filter: brightness(120%);
+  background-color: #884EA0;
+  transform: scale(1.2);
+}
+
+#downloadLink {
+  width: 150px;
+  display: block;
+  justify-items: center;
+  background-color: #154360;
+    
+
+  color: white;
+  padding: 15px 0 15px;
+   filter: brightness(120%);
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.5s;
+  margin: -5px 65%;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 50px;
+  font-style: italic;
+  font-family: 'Courier New', cursive;
+  
+}
+
+#downloadLink:hover {
+  background-color:  #884EA0;
+  transform: scale(1.3);
+}
+
+
+
+
+#qr {
+  
+  
+ animation-name: bienestar;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border-radius: 40px;
+  padding: 5px;
+  background: url("https://i.imgur.com/kGVe72R.png");
+  background-size: 50px 50px;
+   filter: brightness(80%);
+  display: inline-block;
+  width: auto;
+  height: 140px;
+  max-width: 140px;
+  display: block;
+  margin: auto;
+}
+
+
+@keyframes bienestar {
+  
+ 0% { border: 6px solid #17202A; } 
+  20% { border: 6px solid #1B2631; }
+  40% { border: 6px solid #424949; } 
+  60% { border: 6px solid #4D5656; }
+  80% { border: 6px solid #7B7D7D; } 
+  100% { border: 6px solid #FDFEFE; } 
+}
+
+
+h3 {
+
+  filter: brightness(150%);
+  transition: all 0.8s;
+  color: white;
+  font-size: 12px;
+  padding-right: 60%;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Courier New', cursive;
+}
+
+h3:hover {
+  color: gold;
+  filter: brightness(150%);
+  transform: scale(1.2);
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #qr {
+    order: 1; 
+  }
+
+  #downloadLink {
+    order: 1; 
+    margin-top: 50px; 
+    margin: 35%;
+    margin-top: 80px;
+  }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+let qrGenerated = false; 
+
+function generateQR() {
+  let number = document.getElementById('enlaces').value; 
+      
+  const qr = new QRious({
+    element: document.getElementById('qr'),
+    value: number,
+    size: 200
+  });
+
+  qrGenerated = true; 
+
+  const canvas = document.getElementById('qr');
+  const img = canvas.toDataURL("image/png");
+
+  let downloadLink = document.getElementById('downloadLink');
+  downloadLink.href = img;
+  downloadLink.download = number.replace(/[^a-zA-Z0-9]/g,'_') + '.png';
+}
+
+function checkQRBeforeDownload() {
+  if (!qrGenerated) {
+    alert('No se está mostrando ningún QR, por favor genera uno primero.');
+  }
+}
+
+
+
+
+
+
+
+
+function displayTime() {
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; 
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  seconds = seconds < 10 ? '0'+seconds : seconds;
+  const time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+  document.getElementById("myClock").innerText = time;
+  setTimeout(displayTime, 1000);
+}
+
+displayTime();
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
