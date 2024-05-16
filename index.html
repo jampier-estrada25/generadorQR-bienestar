@@ -12,16 +12,33 @@
     <script src='generadordeQR.js'></script>
 </head>
 <body>
+
     <h4> HORA ACTUAL <i class="fas fa-clock"></i></h4>
     <p id="myClock"></p>
+
+
+    <a href="https://github.com/jampier-estrada25/generadorQR-bienestar">
+        <img id="github" src="https://i.imgur.com/VGsbJtL.png" alt="Descripción de la imagen">
+    </a>
+
+
+
+
+
+
   
 <hr style="border-color:grey";>
   
-  <header>
 
-    <img src="https://i.imgur.com/kGVe72R.png" alt="logo de bienestar">
+<div>
+
+  <header>
+    <img class="logo" src="https://i.imgur.com/kGVe72R.png" alt="logo de bienestar">
 </header>
   
+
+</div>
+
     <h1>Generador De QR De Bienestar</h1>
     <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">
         <h2 class="bienestar">Cualquier Tipo De Enlaces:</h2>
@@ -31,6 +48,12 @@
     <p id="error-message"></p>
     <canvas id="qr"></canvas>
     <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
+
+<br>
+  
+<div id="mensajeExito" style="display:none;">DESCARGA EXITOSA <i class="fas fa-thumbs-up"></i></div>
+
+  
     <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
     <h3>@JMP :D</h3>
 </body>
@@ -76,7 +99,7 @@ body::after {
   #myClock {
           
          margin-top: 0px;
-          color: gold;
+          color: aqua;
             font-size: 17px;
             font-family: cursive;
            transition: transform 0.5s;
@@ -88,7 +111,7 @@ body::after {
 
 #myClock:hover {
   filter: brightness(150%);
-  color: green;
+  color: gold;
   transform: scale(1.6);
 }
 
@@ -118,7 +141,7 @@ margin-right: 60%;
 
 
 
-img {
+.logo {
 
 animation-name: myAnimation;
   animation-duration: 5s;
@@ -131,12 +154,40 @@ animation-name: myAnimation;
   height: 200px;
 }
 
-img:hover {
+.logo:hover {
   transform: scale(1.5);
   transition: transform 0.9s ease-in-out;
   box-shadow: 25px 25px 25px aqua;
   transform: rotate(360deg);
 }
+
+
+
+
+#github {
+
+width: 30px;
+  transition: transform 0.4s;
+  height: 30px;
+
+margin-left: 90%;
+    justify-content: center;
+
+
+
+}
+
+
+
+#github:hover {
+border: 3px solid aqua;
+border-radius: 50px;
+  transform: scale(1.4);
+
+
+ }
+
+
 
 
 
@@ -149,7 +200,7 @@ img:hover {
 
 h1 {
 
-   filter: brightness(200%);
+   filter: brightness(150%);
     transition: all 0.5s;
     color: aqua;
     font-size: 3.2em;
@@ -182,15 +233,15 @@ h1:hover {
 
 
 input[type="text"] {
-  color: darkblue;
-  filter: brightness(80%);
+color: darkblue; /* Cambia a negro para mayor contraste */
+  filter: none;
   width: 350px;
   font-family: 'TeXGyreCursor-Regular', monospace;
   padding: 15px 80px;
   margin: 150px 25px;
   font-weight: bold;
   box-sizing: border-box;
-  border: 2px solid aqua;
+  border: 3px solid aqua;
 font-style: italic;
   border-radius: 50px;
 }
@@ -200,57 +251,63 @@ font-style: italic;
 
 
 button {
-  
   font-style: italic;
   width: 150px;
-  background-color: #154360;
+ background: linear-gradient(to left,  transparent 50%, white 50%);
+  background-size: 200% 200%; /* Cambio aquí */
+  background-position: right bottom; /* Cambio aquí */
   color: white;
- font-family: 'Courier New', cursive;;
-  filter: brightness(120%);
+  font-family: 'Courier New', cursive;
   padding: 15px 0 15px;
-   font-weight: bold;
+  font-weight: bold;
   text-align: center;
   transition: all 0.5s;
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
   margin: 15px 80px;
- border: 0px solid orange;
-border-radius: 5px;
+  border: 2px solid  white;
 
+  border-radius: 5px;
 }
 
 button:hover {
-  filter: brightness(120%);
-  background-color: #884EA0;
-  transform: scale(1.2);
+color: darkblue;
+  background-position: left bottom; /* Cambio aquí */
+transform: scale(1.2);
 }
+
+
+
+
 
 #downloadLink {
   width: 150px;
   display: block;
   justify-items: center;
-  background-color: #154360;
-    
-
-  color: white;
+  background: linear-gradient(to left,  transparent 50%, white 50%);
+  background-size: 200% 200%;
+  background-position: left bottom;
+  font-weight: bold;
+  color: darkblue;
   padding: 15px 0 15px;
-   filter: brightness(120%);
   text-align: center;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
   transition: all 0.5s;
   margin: -5px 65%;
-  cursor: pointer;
-  font-weight: bold;
+  border: 2px solid white;
   border-radius: 50px;
   font-style: italic;
   font-family: 'Courier New', cursive;
-  
 }
 
+
+
 #downloadLink:hover {
-  background-color:  #884EA0;
+color: white;
+filter: brightness(100%);
+background-position: right bottom; /* Cambio aquí */
   transform: scale(1.3);
 }
 
@@ -261,13 +318,13 @@ button:hover {
   
   
  animation-name: bienestar;
-  animation-duration: 3s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
   border-radius: 40px;
   padding: 5px;
   background: url("https://i.imgur.com/kGVe72R.png");
   background-size: 50px 50px;
-   filter: brightness(80%);
+  filter: brightness(80%);
   display: inline-block;
   width: auto;
   height: 140px;
@@ -278,21 +335,24 @@ button:hover {
 
 
 @keyframes bienestar {
+
   
- 0% { border: 6px solid #17202A; } 
-  20% { border: 6px solid #1B2631; }
-  40% { border: 6px solid #424949; } 
-  60% { border: 6px solid #4D5656; }
-  80% { border: 6px solid #7B7D7D; } 
-  100% { border: 6px solid #FDFEFE; } 
+ 0% { border: 7px solid #17202A; } 
+  20% { border: 7px solid #1B2631; }
+  40% { border: 7px solid #424949; } 
+  60% { border: 7px solid #4D5656; }
+  80% { border: 7px solid #FDFEFE; } 
+  100% { border: 7px solid aqua; } 
+
+
 }
 
 
 h3 {
 
   filter: brightness(150%);
-  transition: all 0.8s;
-  color: white;
+
+ color: gold;
   font-size: 12px;
   padding-right: 60%;
   font-weight: bold;
@@ -300,14 +360,31 @@ h3 {
   font-family: 'Courier New', cursive;
 }
 
-h3:hover {
-  color: gold;
-  filter: brightness(150%);
-  transform: scale(1.2);
-}
 
 
 
+
+  #mensajeExito{
+    
+  filter: brightness(200%);
+    color: aqua;
+    font-size: 1em;
+    margin-left: 50%;
+ position: relative;
+    top: -200px; 
+    font-weight: bold;
+    font-style: italic;
+   font-family: 'TeXGyreCursor-Regular', monospace;
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
 
 @media screen and (max-width: 768px) {
   .container {
@@ -323,13 +400,19 @@ h3:hover {
   #downloadLink {
     order: 1; 
     margin-top: 50px; 
-    margin: 35%;
+    margin: 33%;
     margin-top: 80px;
   }
 
+  
+
+
+  #mensajeExito{
+
+  margin-left: 2%;
+    margin-top: 100px; /* Ajusta este valor según necesites */
   }
-
-
+}
 
 
 
@@ -343,11 +426,22 @@ h3:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
 <script>
-
-
-
-
+  
+  
+  
+  
+  
 let qrGenerated = false; 
 
 function generateQR() {
@@ -372,15 +466,17 @@ function generateQR() {
 function checkQRBeforeDownload() {
   if (!qrGenerated) {
     alert('No se está mostrando ningún QR, por favor genera uno primero.');
+  } else {
+    // Muestra el mensaje de éxito
+    var mensajeExito = document.getElementById('mensajeExito');
+    mensajeExito.style.display = 'block';
+
+    // Haz que el mensaje desaparezca después de 5 segundos (10000 milisegundos)
+    setTimeout(function() {
+        mensajeExito.style.display = 'none';
+    }, 10000);
   }
 }
-
-
-
-
-
-
-
 
 function displayTime() {
   let date = new Date();
@@ -399,15 +495,31 @@ function displayTime() {
 
 displayTime();
 
-
-
-
-
+  
+  
+  
 
 
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
