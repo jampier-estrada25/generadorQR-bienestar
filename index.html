@@ -286,38 +286,71 @@ transform: scale(1.2);
 
 
 
+
+  
+  
+  
 #downloadLink {
-    width: 150px;
-    display: block;
-    justify-items: center;
-    background: linear-gradient(to left, #feb47b 50%, transparent 50%);
-    background-size: 200% 200%;
-    background-position: left bottom;
-    font-weight: bold;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    padding: 15px 0 15px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.6s;
-    margin: -5px 60%;
-    border: 2px solid white;
-    border-radius: 50px;
-    font-style: italic;
-    font-family: 'Courier New', cursive;
+  font-style: italic;
+  width: 150px;
+  display: block;
+  justify-content: center;
+  background: black; /* Cambio aquí */
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  padding: 15px 0 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.6s;
+  margin: -5px 60%; /* Sin cambios aquí */
+  border: 2px solid white;
+  border-radius: 50px;
+  font-family: 'Courier New', cursive;
+  position: relative; /* Añadido para el pseudo-elemento */
+  overflow: hidden; /* Añadido para el efecto de animación */
 }
-
-
 
 #downloadLink:hover {
-color: black;
-border: 2px solid #feb47b;
-filter: brightness(100%);
-background-position: right bottom; /* Cambio aquí */
+  color: white;
+  border: none;
+  background-position: right bottom;
   transform: scale(1.2);
-
 }
+
+#downloadLink::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #000080, #006400, #800080, #8B4513, #A9A9A9, #8B0000, #2E8B57, #B8860B, #1B2631);
+  background-size: 800%;
+  border-radius: 50px; /* Asegúrate de que este valor sea igual al de #downloadLink */
+  z-index: -1;
+  animation: glowing 20s linear infinite;
+  opacity: 0; /* Añadido para ocultar el gradiente inicialmente */
+  transition: opacity 0.6s; /* Añadido para suavizar la transición */
+}
+
+#downloadLink:hover::before {
+  opacity: 1; /* Muestra el gradiente cuando se pasa el cursor */
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
     
 
 
