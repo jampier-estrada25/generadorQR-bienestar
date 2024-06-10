@@ -18,7 +18,7 @@
 
 
 
-     <div class="animate__animated animate__bounce">
+   <div class="animate__animated animate__bounce slow-bounce">
 
     <h4> HORA ACTUAL <i class="fas fa-clock"></i></h4>
     <p id="myClock"></p>
@@ -37,7 +37,7 @@
 
 
 
- <div class="animate__animated animate__bounce">
+<div class="animate__animated animate__bounce slow-bounce">
   
   <header>
     <img class="logo" src="https://i.imgur.com/kGVe72R.png" alt="logo de bienestar">
@@ -55,7 +55,7 @@
 
 
 
-<div class="animate__animated animate__bounce">
+<div class="animate__animated animate__bounce slow-bounce">
     
     <h1>Generador De QR De Bienestar</h1>
   
@@ -63,7 +63,7 @@
     
     <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">
 
-      <div class="animate__animated animate__bounce">
+   <div class="animate__animated animate__bounce slow-bounce">
         
         <h2 class="bienestar">Cualquier Tipo De Enlaces:</h2>
 
@@ -102,6 +102,11 @@
 
  }
 
+
+.slow-bounce {
+    animation-duration: 2.5s;
+
+}
 
 body {
   
