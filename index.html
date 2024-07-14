@@ -63,7 +63,9 @@
 
 <br>
   
+
 <div id="mensajeExito" style="display:none;">DESCARGA EXITOSA <i class="fas fa-thumbs-up"></i></div>
+<p id="error-message"></p>
 
   
     <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
@@ -77,46 +79,63 @@
 
 
 
+
+
+
+
+
+
+
 <style>
 
 
 
- .animate__animated {
-   
-      animation-duration: 2.6s;
-
- }
-  
+ 
+  animate__animated {
+    
+    animation-duration: 2.6s;
+}
 
 .slow-bounce {
+  
     animation-duration: 6s;
-
 }
 
 body {
   
-  padding-top: 5px;
-  display: block;
-  justify-items: center;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
+    padding-top: 5px; /* Espaciado superior */
+    margin: 0; /* Elimina el margen predeterminado */
+    text-align: center; /* Centra el contenido del cuerpo */
+    position: relative; /* Posición relativa para el seudoelemento */
+    display: flex; /* Usa flexbox para el diseño */
+    flex-direction: column; /* Apila los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    padding-bottom: 20px; /* Añade espacio inferior para evitar superposiciones */
 }
 
+  
 body::after {
-  content: "";
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-  url("https://i.imgur.com/kC8eZcj.png"); 
-  background-repeat: no-repeat;
-  background-size: cover;
-  top: 0;
-  left: 0;
-  bottom: -2%;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+  
+    content: ""; /* Contenido del seudoelemento */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://i.imgur.com/kC8eZcj.png"); /* Imagen de fondo y gradiente */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    background-size: cover; /* Cubrir toda el área */
+    background-attachment: fixed; /* Fijar la imagen de fondo */
+    background-position: center; /* Centrar la imagen */
+    width: 100vw; /* Ancho igual al viewport */
+    height: 100vh; /* Alto igual al viewport */
+    top: 0; /* Colocar en la parte superior */
+    left: 0; /* Colocar en la parte izquierda */
+    position: fixed; /* Posición fija para mantener la imagen de fondo */
+    z-index: -1; /* Colocar detrás del contenido principal */
+  
 }
 
+  
+  
+  
+  
+  
 
 
   #myClock {
@@ -299,6 +318,7 @@ button {
   margin: 15px 80px;
   border: 2px solid  white;
   border-radius: 5px;
+  
 }
 
 button:hover {
@@ -337,6 +357,7 @@ transform-origin: top left;
   border-radius: 50px;
   font-style: italic;
   font-family: 'Courier New', cursive;
+  
 }
 
 
@@ -347,11 +368,10 @@ color: #FDFEFE;
 background-position: right bottom; /* Cambio aquí */
   transform: scale(1.2);
   transform-origin: top left;
+  
 }
 
 
-
-  
 
 
 
@@ -405,9 +425,6 @@ h3 {
 
 
 
-
-
-
    #mensajeExito{
     
     color: #58D68D;
@@ -424,11 +441,40 @@ h3 {
   
   
   
+  .error-message {
+    color: red;
+    font-size: 1.5em;
+    font-family: 'TeXGyreCursor-Regular', monospace;
+}
+  
+  
+
+
+
+
+
+  
 
 @media screen and (max-width: 768px) {
 
+  
+  body {
+    
+        background-size: contain; /* Contener la imagen en dispositivos móviles */
+        background-attachment: scroll; /* Permitir el desplazamiento de fondo en dispositivos móviles */
+    
+    }
 
+  
 
+body::after {
+  
+  
+        background-position: top; 
+
+    }
+
+  
   .logo {
     
   width: 150px;
@@ -478,6 +524,7 @@ font-size: 16px;
     margin-top: 80px;
   }
 
+ 
   
 
 
@@ -487,27 +534,21 @@ font-size: 16px;
     margin-top: 150px; /* Ajusta este valor según necesites */
   }
     
-}
+
 
   
   
+  
+  
+ .error-message {
+        font-size: 1em; /* Tamaño de fuente más pequeño para dispositivos móviles */
+        margin-top: 5px;
+    }
 
-
+   }
 
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -561,20 +602,39 @@ function generateQR() {
   downloadLink.download = number.replace(/[^a-zA-Z0-9]/g,'_') + '.png';
 }
 
-function checkQRBeforeDownload() {
-  if (!qrGenerated) {
-    alert('No se está mostrando ningún QR, por favor genera uno primero.');
-  } else {
-    // Muestra el mensaje de éxito
+  
+function showErrorMessage(message) {
+    var errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+    errorMessage.classList.add('error-message');
+
+    setTimeout(function() {
+        errorMessage.textContent = "";
+        errorMessage.classList.remove('error-message');
+    }, 8000);
+}
+  
+  
+
+function showSuccessMessage() {
     var mensajeExito = document.getElementById('mensajeExito');
     mensajeExito.style.display = 'block';
 
-    // Haz que el mensaje desaparezca después de 20 segundos (20000 milisegundos)
     setTimeout(function() {
         mensajeExito.style.display = 'none';
     }, 20000);
-  }
 }
+
+  
+function checkQRBeforeDownload() {
+    if (!qrGenerated) {
+        showErrorMessage('No se está mostrando un QR, por favor genera uno primero.');
+    } else {
+        showSuccessMessage();
+    }
+}
+
+
 
 function displayTime() {
   let date = new Date();
@@ -601,45 +661,6 @@ displayTime();
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
