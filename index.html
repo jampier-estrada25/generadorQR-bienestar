@@ -57,7 +57,9 @@
         <input type="text" id="enlaces" placeholder="Ingresa el Enlace Aquí" required>
         <button type="submit">GENERAR QR</button>
     </form>
+   
     <p id="error-message"></p>
+   
     <canvas id="qr"></canvas>
     <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
 
@@ -69,8 +71,8 @@
     <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
 
     <h3>@JMP :)</h3>
-
-    <h5 id="error-message"></h5>
+   
+  <h5 id="error-message-2"></h5>
 
  </div>
 </body>
@@ -109,20 +111,13 @@
 }
   
 
-
-
-
-
-
-
-
-  
   
 body {
   
     padding-top: 5px; /* Espaciado superior */
     margin: 0; /* Elimina el margen predeterminado */
     text-align: center; /* Centra el contenido del cuerpo */
+    display: flex;
     position: relative; /* Posición relativa para el seudoelemento */
     flex-direction: column; /* Apila los elementos en columna */
     align-items: center; /* Centra horizontalmente */
