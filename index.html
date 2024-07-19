@@ -2,79 +2,60 @@
 <html lang="es">
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>QRgenerador bienestar.joven</title>
-    <link rel="icon" href="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" type="image/png">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='generadordeQR.css'>
-    <link href="https://fonts.googleapis.com/css2?family=Syabil&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src='generadordeQR.js'></script>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>QRgenerador bienestar.joven</title>
+  <link rel="icon" href="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" type="image/png">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='generadordeQR.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Syabil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   
- <div class="animate__animated animate__zoomInLeft">
+  <div class="animate__animated animate__zoomInLeft">
 
-
-    <h4> HORA ACTUAL <i class="fas fa-clock"></i></h4>
+    <h4>HORA ACTUAL <i class="fas fa-clock"></i></h4>
     <p id="myClock"></p>
 
-   
-
-<!-- logo de github -->
-   <a href="https://github.com/jampier-estrada25/generadorQR-bienestar" target="_blank">
-    <img id="github" src="https://i.ibb.co/ZSVfRmp/github.png" alt="github">
+    <!-- Logo de GitHub -->
+    <a href="https://github.com/jampier-estrada25/generadorQR-bienestar" target="_blank">
+      <img id="github" src="https://i.ibb.co/ZSVfRmp/github.png" alt="Logo de GitHub">
     </a>
     
-<hr style="border-color:#4D5656";>
-  
-
-<div>
-
-
-
-<div class="animate__animated animate__bounce slow-bounce">
-  
-    <header>
-        <img class="logo" src="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" alt="bienestar-joven">
-    </header>
-
-</div>
-  
-</div>
-
-<br>
-
-    <br>
+    <hr>
     
- <br>   
+    <div class="animate__animated animate__bounce slow-bounce">
+      <header>
+        <img class="logo" src="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" alt="Logo Bienestar Joven">
+      </header>
+    </div>
 
- 
-    <h1>Generador De QR De Bienestar</h1>
-    <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">    
-        <h2 class="bienestar">Cualquier Tipo De Enlaces:</h2>
-        <input type="text" id="enlaces" placeholder="Ingresa el Enlace Aquí" required>
-        <button type="submit">GENERAR QR</button>
-    </form>
-   
-    <p id="error-message"></p>
-   
-    <canvas id="qr"></canvas>
-    <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
-
-<br>
+  <h1>Generador De QR De Bienestar</h1>
   
+  <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">    
+    <h2 class="bienestar">Cualquier Tipo De Enlaces:</h2>
+    <input type="text" id="enlaces" placeholder="Ingresa el Enlace Aquí" required>
+    <button type="submit">GENERAR QR</button>
+  </form>
+  
+  <p id="error-message"></p>
+  <canvas id="qr"></canvas>
+  <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
 
-<div id="mensajeExito" style="display:none;">DESCARGA EXITOSA <i class="fas fa-thumbs-up"></i></div>
+  <div id="mensajeExito" style="display:none;">
+    DESCARGA EXITOSA <i class="fas fa-thumbs-up"></i>
+  </div>
 
-    <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
-
-    <h3>@JMP :)</h3>
-   
+  <h3>@JMP :)</h3>
+    
   <h5 id="error-message-2"></h5>
+    
+</div>
 
- </div>
+  <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
+  <script src='generadordeQR.js'></script>
+  
 </body>
 </html>
 
@@ -88,11 +69,7 @@
 
 
 
-
-
 <style>
-
-
 
 
 
@@ -111,6 +88,8 @@
 }
   
 
+
+  
   
 body {
   
@@ -463,7 +442,9 @@ h3 {
     bottom: 0; /* Posiciona el mensaje en la parte inferior de la página */
     width: 100%; /* Asegura que el mensaje se extienda a lo ancho de la página */
     margin-bottom: 50px; /* Agrega un margen inferior para separar el texto del borde */
-}
+
+
+  }
 
 
 
@@ -481,21 +462,46 @@ h3 {
 
   
 
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
 
-  
+
+  .animate__animated {
+
+    animation-duration: 5s; /* Duración general de las animaciones en dispositivos móviles */
+  }
+
+  .animate__zoomInLeft {
+
+    animation-duration: 3.3s; /* Duración específica de la animación zoomInLeft en móviles */
+
+  }
+
+  .slow-bounce {
+
+    animation-duration: 8s; /* Duración específica de la animación slow-bounce en móviles */
+
+  }
+
+
+
 
  body {
+
+    background-size: cover; 
    
-        background-size: cover; /* Cubrir toda el área en dispositivos móviles */
-        /* background-attachment: scroll; */ /* Permitir el desplazamiento de fondo en dispositivos móviles */
+       background-attachment: scroll; 
+ }
+
+    body::after{
+
+  
+        background-size: cover; 
+      
+       background-attachment: scroll; 
+
     }
 
-    body::after {
-        /* background-attachment: scroll; */ /* Ajustar el fondo del seudoelemento para que se desplace */
-    }
-
-
+ 
   
   .logo {
     
@@ -538,6 +544,7 @@ font-size: 16px;
   #qr {
     order: 1; 
   }
+    
 
   #downloadLink {
     
@@ -553,7 +560,7 @@ font-size: 16px;
   
 
 
-  #mensajeExito{
+#mensajeExito {
 
     font-size: 16px;
     left: 0%; /* Ajusta este valor según sea necesario */
@@ -567,7 +574,7 @@ font-size: 16px;
 
   
   
-  .error-message {
+  .error-message-2 {
 
     font-size: 16px;
     margin: 0 auto; /* Centra el texto horizontalmente */
@@ -609,105 +616,95 @@ font-size: 16px;
 
 
 
+
+
+
+
+
+
+
+
+
+
 <script>
   
   
   
   
   
-let qrGenerated = false; 
-
-function generateQR() {
-  let number = document.getElementById('enlaces').value; 
-      
-  const qr = new QRious({
-    element: document.getElementById('qr'),
-    value: number,
-    size: 200
-  });
-
-  qrGenerated = true; 
-
-  const canvas = document.getElementById('qr');
-  const img = canvas.toDataURL("image/png");
-
-  let downloadLink = document.getElementById('downloadLink');
-  downloadLink.href = img;
-  downloadLink.download = number.replace(/[^a-zA-Z0-9]/g,'_') + '.png';
-}
-
-  
-function showErrorMessage(message) {
-    var errorMessage = document.getElementById('error-message');
-    errorMessage.textContent = message;
-    errorMessage.classList.add('error-message');
-
-    setTimeout(function() {
-        errorMessage.textContent = "";
-        errorMessage.classList.remove('error-message');
-    }, 8000);
-}
-  
-  
-
-
-
-function checkQRBeforeDownload() {
-    if (!qrGenerated) {
-        showErrorMessage('No se está mostrando un QR,genera uno primero.');
-    } else {
-        showSuccessMessage();
+    let qrGenerated = false; 
+    
+    function generateQR() {
+      let number = document.getElementById('enlaces').value; 
+          
+      const qr = new QRious({
+        element: document.getElementById('qr'),
+        value: number,
+        size: 200
+      });
+    
+      qrGenerated = true; 
+    
+      const canvas = document.getElementById('qr');
+      const img = canvas.toDataURL("image/png");
+    
+      let downloadLink = document.getElementById('downloadLink');
+      downloadLink.href = img;
+      downloadLink.download = number.replace(/[^a-zA-Z0-9]/g,'_') + '.png';
     }
-}
-
-
-
-
-
-function showSuccessMessage() {
-    var mensajeExito = document.getElementById('mensajeExito');
-    mensajeExito.style.display = 'block';
-
-    setTimeout(function() {
-        mensajeExito.style.display = 'none';
-    }, 20000);
-}
-
-  
-
-
-function displayTime() {
-  let date = new Date();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let seconds = date.getSeconds();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12; 
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  seconds = seconds < 10 ? '0'+seconds : seconds;
-  const time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-  document.getElementById("myClock").innerText = time;
-  setTimeout(displayTime, 1000);
-}
-
-displayTime();
-
-  
-  
-  
-
-
-
-
-</script>
-
-
-
-
-
-
-
+    
+    function showErrorMessage(message) {
+        var errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = message;
+        errorMessage.classList.add('error-message');
+    
+        setTimeout(function() {
+            errorMessage.textContent = "";
+            errorMessage.classList.remove('error-message');
+        }, 8000);
+    }
+    
+    function checkQRBeforeDownload() {
+        if (!qrGenerated) {
+            showErrorMessage('No se está mostrando un QR, genera uno primero.');
+        } else {
+            showSuccessMessage();
+        }
+    }
+    
+    function showSuccessMessage() {
+        var mensajeExito = document.getElementById('mensajeExito');
+        mensajeExito.style.display = 'block';
+    
+        setTimeout(function() {
+            mensajeExito.style.display = 'none';
+        }, 20000);
+    }
+    
+    function displayTime() {
+      let date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; 
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      seconds = seconds < 10 ? '0'+seconds : seconds;
+      const time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+      document.getElementById("myClock").innerText = time;
+      setTimeout(displayTime, 1000);
+    }
+    
+    displayTime();
+    
+    
+    
+    
+    
+    </script>
+    
+    
 
 
 
