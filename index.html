@@ -1,68 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>QRgenerador bienestar.joven</title>
-  <link rel="icon" href="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" type="image/png">
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>QRgenerador Bienestar Joven</title>
+  <meta name="description" content="Generador de códigos QR para Bienestar Joven">
+  <meta name="keywords" content="QR, Bienestar Joven, generador QR">
+  <link rel="icon" href="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel='stylesheet' type='text/css' media='screen' href='generadordeQR.css'>
   <link href="https://fonts.googleapis.com/css2?family=Syabil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  
-  <div class="animate__animated animate__zoomInLeft">
 
+
+
+  <div class="animate__animated animate__zoomInLeft slow-zoom">
     <h4>HORA ACTUAL <i class="fas fa-clock"></i></h4>
     <p id="myClock"></p>
 
-    <!-- Logo de GitHub -->
     <a href="https://github.com/jampier-estrada25/generadorQR-bienestar" target="_blank">
       <img id="github" src="https://i.ibb.co/ZSVfRmp/github.png" alt="Logo de GitHub">
     </a>
-    
-   <hr style="border-color:grey;">
 
-    
+    <hr style="border-color:grey;">
+
+
     <div class="animate__animated animate__bounce slow-bounce">
-      <header>
-        <img class="logo" src="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" alt="Logo Bienestar Joven">
-      </header>
+        <header>
+          <img class="logo" src="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" alt="Logo Bienestar Joven">
+        </header>
+      </div>
+
+    <h1>Generador De QR De Bienestar</h1>
+  
+    <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">    
+      <h2 class="bienestar">Cualquier Tipo De Enlaces:</h2>
+      <input type="text" id="enlaces" placeholder="Ingresa el Enlace Aquí" required>
+      <button type="submit">GENERAR QR</button>
+    </form>
+  
+    <p id="error-message" class="erroresbienestar"></p>
+    
+    <canvas id="qr"></canvas>
+    <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
+
+    <div id="mensajeExito" style="display:none;">
+      DESCARGA EXITOSA <i class="fas fa-thumbs-up"></i>
     </div>
 
-  <h1>Generador De QR De Bienestar</h1>
-  
-  <form id="qrForm" onsubmit="event.preventDefault(); generateQR();">    
-    <h2 class="bienestar">Cualquier Tipo De Enlaces:</h2>
-    <input type="text" id="enlaces" placeholder="Ingresa el Enlace Aquí" required>
-    <button type="submit">GENERAR QR</button>
-  </form>
-  
-  <p id="error-message"></p>
-    
-  <canvas id="qr"></canvas>
-  <a id="downloadLink" download="QRCode.png" onclick="checkQRBeforeDownload()">DESCARGAR QR</a>
-
-  <div id="mensajeExito" style="display:none;">
-    DESCARGA EXITOSA <i class="fas fa-thumbs-up"></i>
+    <h3>@JMP :)</h3>
   </div>
-
-  <h3>@JMP :)</h3>
-    
-</div>
 
   <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
   <script src='generadordeQR.js'></script>
-
-  
 </body>
 </html>
 
 
 
 
+
+
+<style>
+
+
+    /* CSS personalizado para ajustar la velocidad de las animaciones */
+    .slow-zoom {
+      animation-duration: 3.5s;
+    }
+    .slow-bounce {
+      animation-duration: 8s;
+    }
+
+
+  </style>
 
 
 
@@ -74,23 +88,6 @@
 
 
 
-
-/* Estilo para la animación */
-.animate__animated {
-    animation-duration: 5s; /* Ajusta la duración de la animación general */
-}
-
-.animate__zoomInLeft {
-    animation-duration: 3.3s; /* Ajusta la duración de la animación específica */
-}
-
-.slow-bounce {
-    animation-duration: 8s; /* Ajusta la duración de la animación específica */
-}
-  
-
-
-  
   
 body {
   
@@ -285,6 +282,7 @@ color: darkblue;
   border: 5px solid #154360;
 font-style: italic;
   border-radius: 50px;
+
 }
 
 
@@ -458,30 +456,18 @@ h3 {
 
 
 
-
-
-
-
   
 
   @media screen and (max-width: 768px) {
 
 
-  .animate__animated {
 
-    animation-duration: 5s; /* Duración general de las animaciones en dispositivos móviles */
+    .animate__animated.animate__zoomInLeft.slow-zoom {
+    animation-duration: 3.5s;
   }
 
-  .animate__zoomInLeft {
-
-    animation-duration: 3.3s; /* Duración específica de la animación zoomInLeft en móviles */
-
-  }
-
-  .slow-bounce {
-
-    animation-duration: 8s; /* Duración específica de la animación slow-bounce en móviles */
-
+  .animate__animated.animate__bounce.slow-bounce {
+    animation-duration: 8s;
   }
 
 
@@ -535,6 +521,7 @@ font-size: 16px;
     margin-top: 50px; 
     margin: 32.6%;  /* 32 hacia atras, mas a tu izquierda.. y 32 hacia adelante mas a tu derecha*/ 
     margin-top: 80px;
+
   }
 
  
@@ -570,6 +557,7 @@ font-size: 16px;
 }
 
 }
+
 
 
 </style>
@@ -650,7 +638,7 @@ font-size: 16px;
     
         setTimeout(function() {
             mensajeExito.style.display = 'none';
-        }, 20000);
+        }, 18000);
     }
     
     function displayTime() {
@@ -677,10 +665,6 @@ font-size: 16px;
     </script>
     
     
-
-
-
-
 
 
 
