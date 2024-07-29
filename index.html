@@ -15,7 +15,7 @@
 </head>
 <body>
 
-
+<div id="animatedDiv">
     <div class="animation-container">
         
         <div class="animate__animated animate__jackInTheBox slow-bounce">
@@ -32,7 +32,7 @@
 
     <div class="animate__animated animate__bounce slow-bounce">
         <header>
-          <img class="logo" src="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" alt="Logo Bienestar Joven">
+      <img class="logo" src="https://i.ibb.co/4Wnwx9x/bienestar-joven.webp" alt="Logo de Bienestar Joven">
         </header>
       </div>
 
@@ -59,6 +59,7 @@
 
         </div>
     </div>
+  </div>
 </body>
 </html>
 
@@ -464,6 +465,16 @@ h3 {
   @media screen and (max-width: 768px) {
 
 
+ .animate__jackInTheBox {
+   
+    animation: simpleAppear 0.5s ease-in;
+  }
+
+  @keyframes simpleAppear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   .logo {
     
   width: 150px;
@@ -660,7 +671,22 @@ font-size: 16px;
 
 
 
-
+<script>
+  
+ // Aplicar animación con retraso
+  setTimeout(() => {
+    const animatedDiv = document.getElementById('animatedDiv');
+    if (window.innerWidth <= 768) {
+      // Animación simple para móviles
+      animatedDiv.classList.add('animate__animated', 'animate__fadeIn');
+    } else {
+      // Animación compleja para desktop
+      animatedDiv.classList.add('animate__animated', 'animate__jackInTheBox');
+    }
+  }, 1000);
+});
+  
+</script>
 
 
 
